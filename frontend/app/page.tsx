@@ -52,17 +52,13 @@ export default function Home() {
     setSettingsState((prev) => ({ ...prev, ...patch }))
   }, [])
 
-  /* ── Find the best "original" image for before/after comparison ── */
-  const getPrimaryImage = (): string | null => {
-    return uploads.person ?? uploads.garment ?? uploads.reference ?? uploads.face ?? null
-  }
-
   /* ── Dummy generate: simulate API call with 2.5s delay ── */
   const handleRun = useCallback(async () => {
     setIsGenerating(true)
     setResult(null)
 
-    const originalUrl = getPrimaryImage()
+    const originalUrl =
+      uploads.person ?? uploads.garment ?? uploads.reference ?? uploads.face ?? null
 
     // Simulate backend processing time
     await new Promise((r) => setTimeout(r, 2500))
@@ -79,7 +75,7 @@ export default function Home() {
     })
 
     setIsGenerating(false)
-  }, [uploads, settings, activeFeature])
+  }, [uploads])
 
   const handleUseAsInput = useCallback((url: string) => {
     setUpload("person", url)

@@ -75,6 +75,7 @@ export default function UploadZone({
           className
         )}
       >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={value}
           alt={label}

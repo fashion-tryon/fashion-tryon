@@ -71,6 +71,7 @@ export default function BeforeAfterSlider({
       style={{ cursor: "col-resize", ...style }}
     >
       {/* After image (full) */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={after} alt="After" className="w-full h-full object-cover" draggable={false} />
 
       {/* Before image clipped */}
@@ -78,6 +79,7 @@ export default function BeforeAfterSlider({
         className="absolute inset-0 overflow-hidden"
         style={{ width: `${position}%` }}
       >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={before}
           alt="Before"

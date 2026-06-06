@@ -80,6 +80,7 @@ export default function ResultPanel({
             />
           ) : (
             <div className="relative group max-h-full" style={{ maxHeight: "calc(100vh - 200px)" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={result.imageUrl}
                 alt="Generated result"
