@@ -104,6 +104,7 @@ export default function Home() {
           result={result}
           isGenerating={isGenerating}
           onUseAsInput={handleUseAsInput}
+          onSelectFeature={setActiveFeature}
         />
       </div>
     </div>

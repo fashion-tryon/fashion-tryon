@@ -4,18 +4,27 @@ import { Download, RefreshCw, Layers, Wand2, ImageIcon } from "lucide-react"
 import { useState } from "react"
 import BeforeAfterSlider from "./BeforeAfterSlider"
 import { cn } from "@/lib/utils"
-import type { GenerateResult } from "@/lib/types"
+import type { GenerateResult, FeatureId } from "@/lib/types"
 
 interface ResultPanelProps {
   result: GenerateResult | null
   isGenerating: boolean
   onUseAsInput: (url: string) => void
+  onSelectFeature: (id: FeatureId) => void
 }
+
+const FEATURE_SHORTCUTS: { label: string; id: FeatureId }[] = [
+  { label: "Virtual try-on", id: "tryon" },
+  { label: "Product on model", id: "product-to-model" },
+  { label: "Clean packshots", id: "packshot" },
+  { label: "AI face swap", id: "face-swap" },
+]
 
 export default function ResultPanel({
   result,
   isGenerating,
   onUseAsInput,
+  onSelectFeature,
 }: ResultPanelProps) {
   const [showComparison, setShowComparison] = useState(false)
 
@@ -150,20 +159,16 @@ export default function ResultPanel({
           </p>
         </div>
 
-        {/* Feature hints */}
+        {/* Feature shortcuts */}
         <div className="grid grid-cols-2 gap-2 w-full mt-2">
-          {[
-            "Virtual try-on",
-            "Product on model",
-            "Clean packshots",
-            "AI face swap",
-          ].map((hint) => (
-            <div
-              key={hint}
-              className="px-2.5 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-500 text-xs text-center"
+          {FEATURE_SHORTCUTS.map(({ label, id }) => (
+            <button
+              key={id}
+              onClick={() => onSelectFeature(id)}
+              className="px-2.5 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-500 text-xs text-center hover:border-zinc-600 hover:text-zinc-300 hover:bg-zinc-800 transition-colors"
             >
-              {hint}
-            </div>
+              {label}
+            </button>
           ))}
         </div>
       </div>
