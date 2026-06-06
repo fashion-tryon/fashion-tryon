@@ -124,10 +124,10 @@ export default function ResultPanel({
 
   /* ── Empty state ── */
   return (
-    <div className="flex-1 flex flex-col items-center justify-center bg-zinc-950 gap-6 p-8">
+    <div className="relative flex-1 flex flex-col items-center justify-center bg-zinc-950 gap-6 p-8">
       {/* Decorative grid background */}
       <div
-        className="absolute inset-0 opacity-[0.03]"
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
         style={{
           backgroundImage:
             "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)",
