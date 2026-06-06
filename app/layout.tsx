@@ -29,8 +29,8 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-sm">
-            <div className="container flex h-14 items-center justify-between">
+          <header className="sticky top-0 z-50 w-full border-b border-border bg-background">
+            <div className="mx-auto flex h-14 max-w-screen-xl items-center justify-between px-6">
               <span className="font-semibold text-foreground">Fashion Try-On Studio</span>
               <ThemeToggle />
             </div>

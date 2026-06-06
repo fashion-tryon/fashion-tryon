@@ -1,6 +1,27 @@
 "use client"
 
-import { Sparkles, ExternalLink } from "lucide-react"
+import { Sparkles, ExternalLink, Sun, Moon } from "lucide-react"
+import { useTheme } from "next-themes"
+import { useEffect, useState } from "react"
+
+function ThemeToggle() {
+  const { theme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => setMounted(true), [])
+
+  if (!mounted) return <div className="w-8 h-8" />
+
+  return (
+    <button
+      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+      aria-label="Toggle theme"
+      className="w-8 h-8 flex items-center justify-center rounded-md border border-zinc-700 text-zinc-300 hover:text-white hover:border-zinc-500 hover:bg-zinc-800 transition-colors"
+    >
+      {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+    </button>
+  )
+}
 
 export default function Header() {
   return (
@@ -28,6 +49,8 @@ export default function Header() {
         >
           <ExternalLink className="w-4 h-4" />
         </a>
+        <div className="h-4 w-px bg-zinc-700" />
+        <ThemeToggle />
       </div>
     </header>
   )
